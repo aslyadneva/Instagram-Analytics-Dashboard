@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,600,700&display=swap');
+
+*, html {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
+#root {
+  background: lightpink;
+  height: 100vh; 
+  width: 100vw;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+/*************** SEARCH **************/
+
+.MainSearch {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.MainSearch__Title {
+  color: white; 
+  margin-bottom: 1rem;
+  letter-spacing: 0.15rem
+}
+
+.MainSearch__Bar {
+  display: flex; 
+  align-items: center;
+  position: relative;
+}
+
+.MainSearch__Bar i {
+  position: absolute;
+  color: white; 
+  padding-left: 18px;
+}
+
+.MainSearch__Bar button {
+  outline: none; 
+  position: absolute; 
+  right: 0; 
+  font-size: 1.2rem;
+  padding: 0.7rem 2rem;
+  border-radius: 20px;
+  border: none; 
+}
+
+.MainSearch__Bar input {
+  background: rgba(255,255,255,0.3);
+  font-size: 1.2rem;
+  padding: 0.7rem 3.5rem; 
+  padding-right: 10rem;
+  border-radius: 20px;
+  color: white; 
+}
+
+.MainSearch ::placeholder {
+  color: white; 
+}
+
+
+/*************** SPINNER   **************/
+
+.Spinner__Title {
+  color: white; 
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************** DASHBOARD **************/
+
+.Dashboard {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 20px;
+}
+
+.Dashboard input {
+  background: transparent;
+}
+
+.Dashboard__Header {
+  height: 30%; 
+  display: flex; 
+  flex-direction: column;
+}
+
+.Dashboard__Stats {
+  display: flex; 
+  flex:1;
+  align-items: center;
+}
+
+.Dashboard__Stats__Image {
+  display: flex;
+  justify-content: center;
+  position: relative; 
+}
+
+.Dashboard__Stats__Image i {
+  position: absolute ;
+  color: lightblue; 
+  right: 2px;
+  top: 105px;
+}
+.Dashboard__Stats__Image img{
+  width: 150px;
+  height: auto;
+  object-fit: contain; 
+  border-radius: 150px;
+  padding: 0.5rem;
+}
+
+.Dashboard__Stats__Data {
+  margin-left: 2rem;
+  flex: 1
+}
+
+.Dashboard__Body {
+  height: 70%;
+  background: lightblue; 
+}
+
+
+@media screen and (min-width: 1024px) {
+  .Dashboard {
+    width: 80%; 
+    height: 80%
+  }
+}
