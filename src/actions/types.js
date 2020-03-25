@@ -1,2 +1,3 @@
 export const FETCH_USER = "FETCH_USER";
 export const PROCESS_REQUEST = "PROCESS_REQUEST"; 
+export const TOGGLE_CHART = "TOGGLE_CHART"; 

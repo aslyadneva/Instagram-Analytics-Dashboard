@@ -1,4 +1,4 @@
-import {FETCH_USER, PROCESS_REQUEST} from '../actions/types'; 
+import {FETCH_USER, PROCESS_REQUEST, FETCH_CHART} from '../actions/types'; 
 
 const INITIAL_STATE = {
   isLoading: false, 
@@ -13,9 +13,10 @@ export default function(state = INITIAL_STATE, action) {
       }
    
     case FETCH_USER: 
-      const newData = action.payload
+      const userData = action.payload; 
+      console.log(userData); 
       return {
-        isLoading: false, data: newData
+        ...state, isLoading: false, data: userData
       }
    
     default: 

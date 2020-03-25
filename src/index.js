@@ -9,6 +9,8 @@ import history from './history';
 
 import {Router} from 'react-router-dom'; 
 import App from './App';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'; 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
