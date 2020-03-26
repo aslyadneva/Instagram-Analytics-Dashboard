@@ -2,21 +2,48 @@ import React from 'react';
 import Chart from "react-apexcharts";
 import { connect } from 'react-redux'; 
 import { toggleChart } from '../actions'; 
-import { numFormatter } from '../helpers'; 
+import { numFormatter, dateFormatter } from '../helpers'; 
 
 class GrowthChart extends React.Component {
+  
   constructor(props) {
     super(props);
 
     this.state = {
       options: {
+        dataLabels: {
+          enabled: false,
+        },
+        grid: {
+          show: false, 
+          padding: {
+            left: 0, 
+            right: 0
+          }
+        },
+        tooltip: {
+          enabled: false
+        },
         chart: {
-          id: "line"
+          id: "line", 
+          toolbar: {
+            show: false
+          }
         },
         xaxis: {
-          categories: ['previous date', 'current date']
+          categories: dateFormatter('Monthly')
+        }, 
+        yaxis: {
+          labels: {
+            offsetX: -15,
+            offsetY: 0,
+            formatter: function(val, index) {
+              return numFormatter(val);
+            }
+          }
         }
       },
+
       series: [ {name: "series-1", data: [this.props.user.profile.follower_count - this.props.user.summary.daily_growth, this.props.user.profile.follower_count] } ]
     }  
   }
@@ -25,11 +52,17 @@ class GrowthChart extends React.Component {
     this.props.toggleChart(timeFrame); 
 
     if (timeFrame === "Daily") {
-      this.setState({ series: [{name: "series-1", data: [currentFollowers - monthlyGrowth, currentFollowers]}] }); 
-      console.log(currentFollowers - monthlyGrowth); 
-    } else {
-      this.setState({ series: [ { name: "series-1", data: [currentFollowers - dailyGrowth, currentFollowers] } ] })
-      console.log(currentFollowers - dailyGrowth); 
+      this.setState({ 
+        series: [{name: "series-1", data: [currentFollowers - monthlyGrowth, currentFollowers]}], 
+        options: {...this.state.options, xaxis: { categories: dateFormatter('Daily') }}
+      });     
+    } 
+    
+    else {
+      this.setState({ 
+        series: [ { name: "series-1", data: [currentFollowers - dailyGrowth, currentFollowers] } ],
+        options: {...this.state.options, xaxis: { categories: dateFormatter('Monthly') }}
+       })
     }    
   }
 
@@ -64,12 +97,14 @@ class GrowthChart extends React.Component {
 
         </div>  
 
-        <Chart
-          options={this.state.options}
-          series={this.state.series}
-          type='area'
-          height= '200'
-        />            
+        <div className="px-3">
+          <Chart
+            options={this.state.options}
+            series={this.state.series}
+            type='area'
+            height= '200'
+          />  
+        </div>          
       </div>      
     )
   }

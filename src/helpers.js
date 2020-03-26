@@ -1,4 +1,4 @@
-export const numFormatter = (num) => {  
+export const numFormatter = num => {  
   if (num > 999 && num <= 999949) {
     return `${(num / 1000).toFixed(1)}k`;
   }
@@ -9,6 +9,54 @@ export const numFormatter = (num) => {
 
   return num 
 }
+
+
+export const dateFormatter = (timeFrame) => {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; 
+  
+  let currentDate; 
+  let previousDate;
+
+  const today = new Date(); 
+
+  if (timeFrame === "Monthly") {    
+    // ex. Day and Month ---  25 Mar
+    currentDate = `${today.getDate()} ${months[today.getMonth()]}`; 
+    previousDate = `${today.getDate()-1} ${months[today.getMonth()]}`; 
+  } 
+  
+  else if (timeFrame === "Daily") {
+     // ex. Month ---  Mar
+     currentDate = `${months[today.getMonth()]}`
+     previousDate = `${months[today.getMonth() -1]}`; 
+  }
+
+  return [previousDate, currentDate]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const growthDifference = (current, previous) => {
       //   let percentage = Math.round(100 - ((current/previous) * 100))
