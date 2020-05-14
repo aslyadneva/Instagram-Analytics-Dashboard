@@ -9,18 +9,19 @@
 
 body {
   font-size: 15px; 
+  background: linear-gradient(to top right, #8A64EB, #64EBDE) no-repeat;
+  min-height: 100vh; 
+  overflow-x: hidden
+  // width: 100%; 
   /* font-family: 'Quicksand', sans-serif; */
 }
 
-/* #root {
-  background: black;
-  height: 100vh; 
-  width: 100vw; */
-  /* display: flex;
-  flex-direction: column; 
-  align-items: center;
-  justify-content: center; */
-/* } */
+#root {
+  // height: 100%; 
+  // width: 100%;
+} 
+
+
 
 /* main {
   height: 100%; 
@@ -50,9 +51,11 @@ input {
 /*************** SEARCH **************/
 
 .MainSearch {
+  height: 100vh; 
   display: flex; 
   flex-direction: column;
   align-items: center;
+      justify-content: center;
 }
 
 .MainSearch__Title {
@@ -63,9 +66,11 @@ input {
 }
 
 .MainSearch__Bar {
+  border-radius: 20px;
   display: flex; 
   align-items: center;
   position: relative;
+  box-shadow: 6px 9px 25px -1px rgba(0,0,0,0.38);
 }
 
 .MainSearch__Bar i {
@@ -94,11 +99,16 @@ input {
 }
 
 .MainSearch ::placeholder {
-  color: white; 
+  color: rgba(255,255,255,0.5);
 }
 
 
 /*************** SPINNER   **************/
+.Spinner {
+  position: absolute; 
+  top: 40%;
+  left: 45%; 
+}
 
 .Spinner__Title {
   color: white; 
@@ -142,6 +152,57 @@ input {
 }
 
 /************************************   DASHBOARD   *************************************/
+.Dashboard {
+  max-width: 1080px;
+  margin: 5vw auto; 
+  background: rgba(255,255,255,0.3);
+  box-shadow: 6px 9px 25px -1px rgba(0,0,0,0.38);
+  border-radius: 20px;
+
+  &__input {
+    background-color: transparent; 
+    border: none; 
+    color: #495057;
+
+    &:focus{
+      color: #495057;
+      background-color: transparent; 
+      border-color: none;
+      border: none; 
+      box-shadow: none; 
+    }
+  }
+  &__stats {
+    display: flex;
+
+    &__image {
+      width: 30%
+    }
+
+    &__description {
+      width: 70%
+    }
+  }
+
+  &__avatar {
+    // filter: saturate(50%)
+  }
+
+  &__graphs {
+
+  }
+
+  &__card{
+    border-radius: 20px;  
+    // background-color: rgba(255,255,255,0.8);
+    background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.561));
+  }
+
+  @media only screen and (min-width: 1200px) {
+    // padding: 0
+  }
+}
+
 /* .Dashboard__Form {
   width: 100%;
   height: 5%;

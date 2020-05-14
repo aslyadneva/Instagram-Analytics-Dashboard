@@ -15,8 +15,13 @@ class Search extends Component {
 
   handleSubmit (event) {
     event.preventDefault(); 
-    this.props.fetchUser(this.state.value);
-    this.setState({value: ''});
+
+    if(this.state.value === '') {
+      alert('Please enter a valid username')
+    } else {    
+      this.props.fetchUser(this.state.value);
+      this.setState({value: ''});
+    }
   }
 
   handleChange (event) {

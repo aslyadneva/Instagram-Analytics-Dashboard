@@ -2,12 +2,12 @@ import React, {Fragment} from 'react';
 
 const Spinner = () => {
   return (
-    <Fragment>
-      <h3 className="Spinner__Title">ANALYZING...</h3>
-      <div className="lds-ring">
+    <div className="Spinner d-flex flex-column justify-content-center">
+      <h3 className="Spinner__Title mb-3">LOADING</h3>
+      <div className="lds-ring align-self-center">
         <div></div><div></div><div></div><div></div>
       </div>
-    </Fragment>
+    </div>
   ); 
 }
 

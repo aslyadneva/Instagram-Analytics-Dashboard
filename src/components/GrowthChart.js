@@ -72,7 +72,7 @@ class GrowthChart extends React.Component {
     const { daily_growth, monthly_growth } = this.props.user.summary;
     
     return (
-      <div className="bg-white text-dark card border-0">
+      <div className="Dashboard__card text-dark card border-0">
 
         <div className="card-body p-3 d-flex flex-column">
 

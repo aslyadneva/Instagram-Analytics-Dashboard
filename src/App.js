@@ -6,11 +6,11 @@ import Dashboard from './components/Dashboard';
 
 class App extends Component {
   render () {
-    return (
+    return ( 
       <Fragment>
         <Switch>
-          <Route path="/" exact component={Search}></Route>
-          <Route path="/:username" exact component={Dashboard}></Route>
+          <Route path="/" exact component={Search}/>
+          <Route path="/:username" exact component={Dashboard}/>
         </Switch>  
       </Fragment>
     );

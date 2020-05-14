@@ -11,7 +11,7 @@ import {Router} from 'react-router-dom';
 import App from './App';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css'; 
+import './index.scss'; 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
 const store = createStore( reducers, composeEnhancers(applyMiddleware(thunk)) );

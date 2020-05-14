@@ -7,22 +7,16 @@ import GrowthChart from './GrowthChart';
 import { numFormatter } from '../helpers'; 
 
 class Dashboard extends Component {
-  constructor () {
-    super(); 
-    this.state = {value: ''}
+  state = {value: ''}
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault(); 
     this.props.fetchUser(this.state.value);
     this.props.toggleChart(this.props.dropDown);
     this.setState({value: ''});
   }
 
-  handleChange (event) {
+  handleChange = (event)=> {
     this.setState({value: event.target.value})
   }
 
@@ -61,21 +55,21 @@ class Dashboard extends Component {
   
       return (
        
-      <main className="bg-white rounded-lg">
+      <main className="Dashboard">
         <form onSubmit={this.handleSubmit} className="rounded-lg Dashboard__Form">
-          <input onChange={this.handleChange} type="text" value={this.state.value} className="form-control rounded-lg" placeholder="Search instagram"/>
+          <input onChange={this.handleChange} type="text" value={this.state.value} className="Dashboard__input form-control" placeholder="Search instagram"/>
         </form>
   
         {/* Image and Stats Row */}
-        <div className="row p-3">
+        <div className="Dashboard__stats p-3 p-sm-5">
   
           {/* Image Col */}
-          <div className="col-3 d-flex align-items-center">
-            <img className="img-fluid rounded-circle" src={profile_picture} alt={username}></img> 
+          <div className="Dashboard__stats__image pl-0 d-flex align-items-center">
+            <img className="Dashboard__avatar img-fluid rounded-circle w-75" src={profile_picture} alt={username}></img> 
           </div>
   
           {/* Stats Col */}
-          <div className="col-9 ">
+          <div className="Dashboard__stats__description">
   
             <div className="mb-3">
               <div className=" font-weight-bold mb-0">
@@ -109,46 +103,46 @@ class Dashboard extends Component {
         </div>
   
         {/* Charts Section */}
-        <div className="p-3 p-sm-5 bg-success rounded-lg border-top">
+        <div className="Dashboard__graphs p-3 px-sm-5 pt-sm-0 pb-sm-5 rounded-lg">
   
           {/* Top Row */}
           <div className="row">
   
             <div className="col-md-4 pb-3">
-              <div className="bg-white text-dark card border-0">
+              <div className="Dashboard__card text-dark card border-0">
                 <div className="card-body p-3 d-flex flex-column">
                   <p className="font-weight-bold">Earnings</p>
                   <p className="text-muted">Estimated earnings per post</p> 
                   <span className="h2 align-self-center">${numFormatter(costPerPost)}</span>          
                 </div>         
                   <div className="d-none d-md-block">        
-                    <DisplayChart type="bar" color='white'/>    
+                    <DisplayChart type="bar" color='#6454F0'/>    
                   </div>      
               </div>
             </div>
   
             <div className="col-md-4 pb-3">
-              <div className="bg-white text-dark card border-0">
+              <div className="Dashboard__card text-dark card border-0">
                 <div className="card-body p-3 d-flex flex-column">
                   <p className="font-weight-bold">Engagement Rate</p>
                   <p className="text-muted">Engagement rate per post</p>       
                   <span className="h2 align-self-center">{(engagement_rate * 100).toFixed(2)}%</span>  
                 </div>            
                 <div className="d-none d-md-block">   
-                  <DisplayChart type="area" color='#F44231'/>
+                  <DisplayChart type="area" color='#3499FF'/>
                 </div>
               </div>
             </div>
   
             <div className="col-md-4 pb-3">
-              <div className="bg-white text-dark card border-0">
+              <div className="Dashboard__card text-dark card border-0">
                 <div className="card-body p-3 d-flex flex-column">
                   <p className="font-weight-bold">Average Likes</p>
                   <p className="text-muted">Average likes per post</p>       
                   <span className="h2 align-self-center">{numFormatter(average_likes)}</span>  
                 </div>            
                 <div className="d-none d-md-block">   
-                  <DisplayChart type="area" color='#F44231'/>
+                  <DisplayChart type="area" color='#64EBDE'/>
                 </div>
               </div>
             </div>
@@ -157,15 +151,15 @@ class Dashboard extends Component {
           {/* Bottom Row  */}
           <div className="row">
   
-            <div className="col-md-4 pb-3">
-              <div className="bg-white text-dark card border-0">
+            <div className="col-md-4 pb-3 pb-md-0">
+              <div className="Dashboard__card h-100 text-dark card border-0">
                 <div className="card-body p-3 d-flex flex-column">
                   <p className="font-weight-bold">Comments</p>
                   <p className="text-muted">Average comments per post</p> 
                   <span className="h2 align-self-center">{numFormatter(average_comments)}</span>    
                 </div>    
                 <div className="d-none d-md-block">   
-                  <DisplayChart type="area" color='#F44231'/>
+                  <DisplayChart type="area" color='#0088BA'/>
                 </div>
               </div>
             </div>
