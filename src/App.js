@@ -13,7 +13,7 @@ class App extends Component {
           <Route path="/:username" exact component={Dashboard}/>
         </Switch>  
       </Fragment>
-    );
+    ); 
   } 
 }
 

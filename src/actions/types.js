@@ -1,3 +1,4 @@
 export const FETCH_USER = "FETCH_USER";
-export const PROCESS_REQUEST = "PROCESS_REQUEST"; 
+export const PROCESS_REQUEST = "PROCESS_REQUEST";
+export const REQUEST_ERROR = "REQUEST_ERROR"; 
 export const TOGGLE_CHART = "TOGGLE_CHART"; 

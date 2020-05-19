@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 
 class Search extends Component {
   constructor () {
-    super(); 
+    super();  
     this.state = {value: ''}
     
     this.handleChange = this.handleChange.bind(this);
@@ -29,10 +29,10 @@ class Search extends Component {
   }
 
   render () {
-    if (this.props.isLoading === true) {
-      return (
-        <Spinner/>
-      );
+    const { isLoading, error } = this.props
+
+    if (isLoading) {
+      return <Spinner/>
     } else {
       return (
         <Fragment>
@@ -47,8 +47,8 @@ class Search extends Component {
                 type="text" 
                 value={this.state.value} 
                 onChange={this.handleChange}
-              ></input>
-              <button type='submit'>SEARCH</button>          
+              ></input>            
+              <button type='submit'>SEARCH</button>      
             </div>
   
           </form>
@@ -59,7 +59,8 @@ class Search extends Component {
 }
 const mapStateToProps = state => {
   return {
-      isLoading: state.user.isLoading
+      isLoading: state.user.isLoading, 
+      error: state.user.requestError
     }
 }
 export default connect(mapStateToProps, {fetchUser})(Search); 

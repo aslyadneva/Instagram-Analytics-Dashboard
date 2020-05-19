@@ -105,9 +105,8 @@ input {
 
 /*************** SPINNER   **************/
 .Spinner {
-  position: absolute; 
-  top: 40%;
-  left: 45%; 
+  width: 100vw;  
+  height: 100vh;
 }
 
 .Spinner__Title {
@@ -155,7 +154,7 @@ input {
 .Dashboard {
   max-width: 1080px;
   margin: 5vw auto; 
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.41);
   box-shadow: 6px 9px 25px -1px rgba(0,0,0,0.38);
   border-radius: 20px;
 
@@ -186,6 +185,7 @@ input {
 
   &__avatar {
     // filter: saturate(50%)
+    // box-shadow: -15px 17px 34px -21px rgba(27,27,31,0.69);
   }
 
   &__graphs {
@@ -196,6 +196,7 @@ input {
     border-radius: 20px;  
     // background-color: rgba(255,255,255,0.8);
     background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.561));
+    box-shadow: -15px 17px 34px -21px rgba(27,27,31,0.69);
   }
 
   @media only screen and (min-width: 1200px) {
