@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions'; 
 
 import Spinner from './Spinner'; 
+import { FaSearch } from 'react-icons/fa';
 
 class Search extends Component {
   constructor () {
@@ -38,10 +39,10 @@ class Search extends Component {
         <Fragment>
             
           <form onSubmit={this.handleSubmit} className="MainSearch">
-            <h1 className="MainSearch__Title">Track any instagram account</h1>
+            <h1 className="MainSearch__Title text-muted">Track any instagram account</h1>
   
             <div className="MainSearch__Bar">   
-              <i className="fas fa-search"></i>        
+              <FaSearch className="MainSearch__Bar__icon"/>     
               <input 
                 placeholder="ex. kimkardashian"
                 type="text" 
