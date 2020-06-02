@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'; 
-import { fetchUser, toggleChart } from '../actions'; 
+import { fetchUser } from '../actions'; 
 import Spinner from './Spinner'; 
 import GrowthChart from './GrowthChart'; 
 import { numFormatter } from '../helpers'; 
@@ -12,7 +12,6 @@ class Dashboard extends Component {
   handleSubmit = (event) => {
     event.preventDefault(); 
     this.props.fetchUser(this.state.value);
-    this.props.toggleChart(this.props.dropDown);
     this.setState({value: ''});
   }
 
@@ -59,9 +58,6 @@ class Dashboard extends Component {
         
         const costPerPostPrev = (((average_likes_previous + average_comments_previous) * 0.025) + ((follower_count - monthly_growth) * 0.0025)).toFixed(2); 
         const costPerPost = (((average_likes + average_comments) * 0.025) + (follower_count * 0.0025)).toFixed(2); 
-
-      console.log(costPerPostPrev)
-      console.log(costPerPost)
   
       return (
        
@@ -228,4 +224,4 @@ const mapStateToProps = state => {
     dropDown: state.dropDown
   }
 }
-export default connect(mapStateToProps, { fetchUser, toggleChart })(Dashboard)
+export default connect(mapStateToProps, { fetchUser })(Dashboard)

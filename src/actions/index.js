@@ -1,6 +1,6 @@
 import axios from 'axios'; 
 import history from '../history'; 
-import {FETCH_USER, PROCESS_REQUEST, TOGGLE_CHART, REQUEST_ERROR } from './types'; 
+import {FETCH_USER, PROCESS_REQUEST, REQUEST_ERROR } from './types'; 
 
 
 function processRequest () {
@@ -30,12 +30,5 @@ export function fetchUser (query) {
       dispatch({type: REQUEST_ERROR, payload: error})
       alert('Account does not exist, enter a valid instagram user')
     }    
-  }
-}
-
-export function toggleChart (type) {
-  return {
-    type: TOGGLE_CHART,
-    payload: type
   }
 }

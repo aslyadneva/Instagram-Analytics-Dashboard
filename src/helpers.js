@@ -12,23 +12,45 @@ export const numFormatter = num => {
 
 
 export const dateFormatter = (timeFrame) => {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; 
+  const getPrevDay = () => {
+    // if the day is 0 that means need to the get the last day of the the previous month 
+
+    let prevMonth; // will be obj 
+
+    if (!months[today.getMonth() - 1].month) {
+      prevMonth = months[months.length - 1]
+      previousMonth = prevMonth.month;
+    } else {
+      prevMonth = months[today.getMonth() - 1].month
+    }
+    return prevMonth
+  }
+
+  const months = [
+    {month:'Jan', days: 31}, {month:'Feb', days: 28}, {month: 'Mar', days: 31}, 
+    {month: 'Apr', days: 30}, {month: 'May', days: 31}, {month: 'Jun', days: 30}, 
+    {month: 'Jul', days: 31}, {month: 'Aug', days: 31}, {month: 'Sep', days: 30}, 
+    {month: 'Oct', days: 31}, {month: 'Nov', days: 30}, {month: 'Dec', days: 31}
+  ]
+
+  const today = new Date(); 
   
+  let previousMonth; 
   let currentDate; 
   let previousDate;
 
-  const today = new Date(); 
-
   if (timeFrame === "Monthly") {    
-    // ex. Day and Month ---  25 Mar
-    currentDate = `${today.getDate()} ${months[today.getMonth()]}`; 
-    previousDate = `${today.getDate()-1} ${months[today.getMonth()]}`; 
+    // ex. Month ---  Mar
+    currentDate = `${months[today.getMonth()].month}`
+    previousDate = `${ months[today.getMonth() - 1].month ? months[today.getMonth() - 1].month : 'Dec' }`; 
   } 
   
   else if (timeFrame === "Daily") {
-     // ex. Month ---  Mar
-     currentDate = `${months[today.getMonth()]}`
-     previousDate = `${months[today.getMonth() -1]}`; 
+    // ex. Day and Month ---  25 Mar
+    currentDate = `${ today.getDate() } ${ months[today.getMonth()].month }`;
+    previousDate = `${ 
+        today.getDate() - 1 ? today.getDate() - 1 : getPrevDay().days} ${ previousMonth ? previousMonth : months[today.getMonth()].month 
+      }`;  
   }
 
   return [previousDate, currentDate]
