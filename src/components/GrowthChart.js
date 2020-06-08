@@ -54,25 +54,20 @@ class GrowthChart extends React.Component {
       series: [ 
         { // initial data is for daily growth -- [followers yesterday, follwers today]
           name: "series-1", 
-          data: [this.props.user.profile.follower_count - this.props.user.summary.daily_growth, this.props.user.profile.follower_count] 
+          data: [this.props.user.currentStats.currFollowers - this.props.user.growth.daily, this.props.user.currentStats.currFollowers] 
         } 
       ]
     }  
   }
 
-  handleClick = ({ target: { textContent}}) => {
-    const { user: { last_stat: { follower_count }, summary: { daily_growth, monthly_growth}} } = this.props
+  handleClick = ({ target: { textContent }}) => {
+    const { user: { currentStats: { currFollowers }, growth: { daily, monthly } } } = this.props
 
-    // console.log(textContent)
-    // console.log(follower_count)
-    // console.log(daily_growth)
-    // console.log(monthly_growth)
-
-    let growthType = textContent === 'Monthly' ? monthly_growth : daily_growth
+    let growthType = textContent === 'Monthly' ? monthly : daily
 
     this.setState({ 
       dropDown: textContent,
-      series: [{ name: "series-1", data: [follower_count - growthType, follower_count] }],
+      series: [{ name: "series-1", data: [currFollowers - growthType, currFollowers] }],
       options: {...this.state.options, xaxis: { categories: dateFormatter(textContent) }}
     })
   }

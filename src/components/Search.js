@@ -30,7 +30,7 @@ class Search extends Component {
   }
 
   render () {
-    const { isLoading, error } = this.props
+    const { isLoading } = this.props
 
     if (isLoading) {
       return <Spinner/>
@@ -48,7 +48,7 @@ class Search extends Component {
                 type="text" 
                 value={this.state.value} 
                 onChange={this.handleChange}
-              ></input>            
+              />           
               <button type='submit'>SEARCH</button>      
             </div>
   

@@ -56,6 +56,37 @@ export const dateFormatter = (timeFrame) => {
   return [previousDate, currentDate]
 }
 
+export const getRateDiff = (currRate, prevRate) => {
+  console.log(currRate, prevRate)
+
+  //get percentage value 
+  let percent = (currRate/prevRate) * 100
+
+  // if 'percent' is more than a 100, it means there was an increase from the previous value
+  if (percent > 100) {
+    // subtract from 100 to get the value of by HOW MUCH the current value increased 
+    return {
+      change: 'more', 
+      value: percent - 100
+    }
+    
+  }
+
+  // if 'percent' is less than a 100, it means there was an DECREASE from the previous value
+  if (percent < 100) {
+    // get the value of by HOW MUCH it decreased compared to the before value 
+    return {
+      change: 'less',
+      value: 100 - percent 
+    }
+  }
+
+  // if 'percent' is equal to 100, there was no change from previous value
+  if (percent === 100) {
+    return null
+  }
+}
+
 
 
 

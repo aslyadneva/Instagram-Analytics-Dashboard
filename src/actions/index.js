@@ -13,7 +13,7 @@ export function fetchUser (query) {
 
   return async function (dispatch) {
 
-    try {
+    try { 
       dispatch(processRequest()); 
 
       const userResults = await axios.get(`https://igblade.com/api/v2/accounts/${query}`, {
@@ -25,10 +25,11 @@ export function fetchUser (query) {
       dispatch({ type: FETCH_USER, payload: userResults.data }) 
       history.push(`/${query}`)
     } 
-    catch (error) {
-      
+    catch (error) {    
+      alert(error)
       dispatch({type: REQUEST_ERROR, payload: error})
-      alert('Account does not exist, enter a valid instagram user')
+      // alert('Account does not exist, enter a valid instagram user')
     }    
+
   }
 }
