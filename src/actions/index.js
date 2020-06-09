@@ -24,10 +24,9 @@ export function fetchUser (query) {
 
       dispatch({ type: FETCH_USER, payload: userResults.data }) 
       history.push(`/${query}`)
-    } 
-    catch (error) {    
-      alert(error)
-      dispatch({type: REQUEST_ERROR, payload: error})
+
+    } catch (error) {    
+      dispatch({type: REQUEST_ERROR, payload: {error, inputValue: query}})
       // alert('Account does not exist, enter a valid instagram user')
     }    
 

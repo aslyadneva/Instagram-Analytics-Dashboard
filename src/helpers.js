@@ -7,7 +7,7 @@ export const numFormatter = num => {
     return `${(num / 1000000).toFixed(1)}m`;
   }  
 
-  return num 
+  return num.toFixed()
 }
 
 

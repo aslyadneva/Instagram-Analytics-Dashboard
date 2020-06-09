@@ -13,7 +13,7 @@ const Card = ({title, data, rate: {change, value}, icon, wrapperColor}) => {
           {arrowIcon}
         </span>
         <span style={{ color, fontWeight: 'bold', marginRight: '.5rem' }}>
-          {`${value.toFixed(2)}`}
+          {`${value.toFixed(2)}%`}
         </span>
         { `${change} than usual` }
       </Fragment>

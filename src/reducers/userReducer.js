@@ -49,7 +49,7 @@ export default function(state = INITIAL_STATE, action) {
       }
 
       return {
-        ...state, isLoading: false, data: neededInfo
+        ...state, isLoading: false, requestError: false, data: neededInfo
       }
 
     case REQUEST_ERROR: 

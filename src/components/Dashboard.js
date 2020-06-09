@@ -1,10 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'; 
 import { fetchUser } from '../actions'; 
 import Spinner from './Spinner'; 
 import Form from './Form';
 import ChartSection from './ChartSection';
 import StatsSection from './StatsSection';
+
+const Error = ({value}) => {
+  return (
+    <aside style={{ color: 'red' }} className="px-3 py-4 px-sm-5">
+      The account @{value} was not found on Instagram.
+    </aside>
+  )
+}
 
 class Dashboard extends Component {
 
@@ -13,15 +21,20 @@ class Dashboard extends Component {
   }
 
   render () {
-    const { data, isLoading } = this.props.user
+    const { data, isLoading, requestError} = this.props.user
 
       if (data && !isLoading) {
-        console.log(data)
+        console.log(requestError)
         return (
           <main className="Dashboard">
             <Form />
-            <StatsSection />
-            <ChartSection />
+            {requestError 
+                ? <Error value={requestError.inputValue}/>
+                : (<Fragment>
+                    <StatsSection />
+                    <ChartSection />
+                  </Fragment>)
+            }       
           </main>
         )
       } else if (isLoading && !data) {

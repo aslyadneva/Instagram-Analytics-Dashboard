@@ -6,31 +6,26 @@ import Spinner from './Spinner';
 import { FaSearch } from 'react-icons/fa';
 
 class Search extends Component {
-  constructor () {
-    super();  
-    this.state = {value: ''}
-    
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  state = {value: ''}
 
-  handleSubmit (event) {
+  handleSubmit =  (event) => {
     event.preventDefault(); 
 
-    if(this.state.value === '') {
-      alert('Please enter a valid username')
+    if (this.state.value === '') {
+      return 
     } else {    
       this.props.fetchUser(this.state.value);
       this.setState({value: ''});
     }
   }
 
-  handleChange (event) {
-    this.setState({value: event.target.value})
+  handleChange = ({target}) => {
+    this.setState({value: target.value})
   }
 
   render () {
-    const { isLoading } = this.props
+    const { isLoading, error } = this.props
+    console.log(error)
 
     if (isLoading) {
       return <Spinner/>
@@ -40,7 +35,6 @@ class Search extends Component {
             
           <form onSubmit={this.handleSubmit} className="MainSearch">
             <h1 className="MainSearch__Title text-muted">Track any instagram account</h1>
-  
             <div className="MainSearch__Bar">   
               <FaSearch className="MainSearch__Bar__icon"/>     
               <input 
@@ -49,15 +43,16 @@ class Search extends Component {
                 value={this.state.value} 
                 onChange={this.handleChange}
               />           
-              <button type='submit'>SEARCH</button>      
             </div>
-  
+            {error && <label style={{ marginTop: '1rem', color: 'red' }}>{`The account @${error.inputValue} was not found on Instagram`}</label>}          
           </form>
+
         </Fragment>
       ); 
     }
   }
 }
+
 const mapStateToProps = state => {
   return {
       isLoading: state.user.isLoading, 

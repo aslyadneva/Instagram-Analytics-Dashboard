@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'; 
+import { fetchUser } from '../actions'; 
 import { FaInstagram } from 'react-icons/fa'
 
-export default class Form extends Component {
+class Form extends Component {
   state = { value: '' }
 
   handleChange = (event) => {
@@ -13,7 +15,7 @@ export default class Form extends Component {
     this.props.fetchUser(this.state.value);
     this.setState({ value: '' });
   }
-
+ 
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="rounded-lg px-3 py-2 Dashboard__form">
@@ -23,3 +25,7 @@ export default class Form extends Component {
     )
   }
 }
+
+export default connect(null, { fetchUser })(Form)
+
+
