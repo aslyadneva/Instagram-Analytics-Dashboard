@@ -29,7 +29,7 @@ const ChartSection = ({
                 <Card
                   title="Engagement Rate"
                   data={`${currEngagementRate.toFixed(2)}%`}
-                  rate={getRateDiff(currEngagementRate, prevEngagementRate)}
+                  rate={!prevEngagementRate ? 'Not enough data yet' : getRateDiff(currEngagementRate, prevEngagementRate)}
                   icon={<FaFire style={{ color: '#fdbd02' }} />}
                   wrapperColor='#fff6da'
                 />
@@ -38,7 +38,7 @@ const ChartSection = ({
                 <Card
                   title="Average Likes"
                   data={numFormatter(currAverageLikes)}
-                  rate={getRateDiff(currAverageLikes, prevAverageLikes)}
+                  rate={!prevAverageLikes ? 'Not enough data yet' : getRateDiff(currAverageLikes, prevAverageLikes)}
                   icon={<FaHeart style={{ color: '#f22c2c' }} />}
                   wrapperColor='#fddfdf'
                 />
@@ -47,7 +47,7 @@ const ChartSection = ({
                   <Card
                     title="Average Comments"
                     data={numFormatter(currAverageComments)}
-                    rate={getRateDiff(currAverageComments, prevAverageComments)}
+                    rate={!prevAverageComments ? 'Not enough data yet' : getRateDiff(currAverageComments, prevAverageComments)}
                     icon={<FaComment style={{ color: '#8e78ee' }} />}
                     wrapperColor='#eeebff'
                   />

@@ -25,7 +25,6 @@ class Search extends Component {
 
   render () {
     const { isLoading, error } = this.props
-    console.log(error)
 
     if (isLoading) {
       return <Spinner/>

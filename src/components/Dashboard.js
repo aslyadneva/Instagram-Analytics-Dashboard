@@ -24,7 +24,6 @@ class Dashboard extends Component {
     const { data, isLoading, requestError} = this.props.user
 
       if (data && !isLoading) {
-        console.log(requestError)
         return (
           <main className="Dashboard">
             <Form />

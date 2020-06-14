@@ -57,7 +57,6 @@ export const dateFormatter = (timeFrame) => {
 }
 
 export const getRateDiff = (currRate, prevRate) => {
-  console.log(currRate, prevRate)
 
   //get percentage value 
   let percent = (currRate/prevRate) * 100
