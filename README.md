@@ -1,8 +1,8 @@
-# E-Commerce Store
+# Instagram Analytics Dashboard
 
-The front-end of an e-commerce store built with React. Browse and search for products, add them to cart, and complete the checkout process.
+Track any instagram account, monitor growth and engagement, get estimated post rates. Built with React, Redux, Bootstrap, IGBlade API and Apex Charts.
 
-[E-Commerce Store](https://ig-dashboard.netlify.app/)
+[Instagram Analytics Dashboard](https://ig-dashboard.netlify.app/)
 
 ## Getting Started
 
@@ -32,3 +32,5 @@ npm start
 * [React](https://reactjs.org/) - The JavaScript framework used
 * [Redux](https://redux.js.org/) - State Management
 * [Bootstrap](https://getbootstrap.com/) - CSS Library
+* [IG Blade API](https://help.igblade.pro/en/articles/3493963-api-access) - API for accessing Instagram user data
+* [Apex Charts](https://apexcharts.com/) - Data Visualization Library
